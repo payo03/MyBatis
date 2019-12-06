@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.ToyMapper">
+	
+	<select id="selectList" resultMap="toyJoinShop">
+		SELECT TOY_NO, TOY_NAME, SHOP.SHOP_NO, SHOP_NAME, SHOP_LOCATION
+		FROM TOY LEFT JOIN SHOP on TOY.SHOP_NO = SHOP.SHOP_NO
+	</select>
+	
+	<resultMap id="toyJoinShop" type="toy">
+		<id column="TOY_NO" property="toyNo" />
+		<result column="TOY_NAME" property="toyName" />
+		<collection property="shops" javaType="java.util.ArrayList" ofType="toy" resultMap="shopResultMap" />
+	</resultMap>
+	
+	<resultMap id="shopResultMap" type="shop">
+		<id column="SHOP_NO" property="shopNo" />
+		<result column="SHOP_NAME" property="shopName" />
+		<result column="SHOP_LOCATION" property="shopLocation" />
+	</resultMap>
+	
+	<select id="select" parameterType="toy" resultType="toy">
+		SELECT * FROM toy WHERE TOY_NO = #{toyNo} and SHOP_NO = #{shopNo}
+	</select>
+	
+	<update id="update" parameterType="toy">
+		UPDATE toy SET TOY_NAME=#{toyName}, TOY_NO = #{toyNo} WHERE TOY_NO = #{toyNo} and SHOP_NO = #{shopNo}
+	</update>
+</mapper>
