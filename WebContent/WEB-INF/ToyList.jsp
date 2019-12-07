@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="domain.Toy"%>
+<%@page import="vo.Toy"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
@@ -35,12 +35,13 @@
 					<%= shopName %></td>
 				<td rowspan="<%= toyList.get(i).getShops().size()%>"> 
 					<%= shopLocation %></td>
-				<td>
-					<form action="${pageContext.request.contextPath }/From/UpdateOrder" method="post" > 
+				<td width="25%">
+					<form action="${pageContext.request.contextPath }/From/Choice" method="post" > 
 						<input type="hidden" name="toyNo" value="<%= toyList.get(i).getToyNo() %>" />
 						<input type="hidden" name="shopNo" value="<%= toyList.get(i).getShops().get(j).getShopNo() %>" />
 						<input type="submit" name="update" value="수정" />
 						<input type="submit" name="order" value="주문" />
+						<input type="submit" name="delete" value="삭제" />
 					</form>
 				</td>
 <%			} %>
@@ -48,9 +49,11 @@
 <%	} %>
 	</tbody>
 </table>
-<div align="center">
-	<input type="text" name="shopLocation" placeholder="ShopLocation">
-	<input type="submit" value="검색">
-</div>
+<form action="${pageContext.request.contextPath }/From/ToyList" method="post">
+	<div align="center">
+		<input type="text" name="shopLocation" placeholder="ShopLocation">
+		<input type="submit" value="검색">
+	</div>
+</form>
 </body>
 </html>

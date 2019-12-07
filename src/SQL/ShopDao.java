@@ -13,7 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import domain.Shop;
+import vo.Shop;
 
 public class ShopDao {
 
@@ -27,25 +27,6 @@ public class ShopDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public List<Shop> shopList() {
-		List<Shop> shop = new ArrayList<>();
-		SqlSession session = null;
-		
-		try {
-			session = sqlSessionFactory.openSession();
-			
-			shop = session.selectList("mybatis.ShopMapper.shopList");
-			
-			session.commit();
-		}catch(Exception e) {
-			e.printStackTrace();
-			session.rollback();
-		}finally {
-			session.close();
-		}
-		return shop;
 	}
 
 	public boolean check(int shopNo) {
@@ -78,7 +59,7 @@ public class ShopDao {
 		try {
 			session = sqlSessionFactory.openSession();
 			
-			session.insert("mybatis.ShopMapper.insert", param);
+			session.insert("mybatis.ShopMapper.register", param);
 			
 			session.commit();
 		}catch(Exception e) {
@@ -89,13 +70,13 @@ public class ShopDao {
 		}
 	}
 
-	public List<Shop> search(String shopLocation) {
+	public List<Shop> shopList(Shop param) {
 		SqlSession session = null;
 		List<Shop> shop = new ArrayList<Shop>();
 		try {
 			session = sqlSessionFactory.openSession();
 			
-			shop = session.selectList("mybatis.ShopMapper.search", shopLocation);
+			shop = session.selectList("mybatis.ShopMapper.shopList", param);
 			
 			session.commit();
 		}catch(Exception e) {

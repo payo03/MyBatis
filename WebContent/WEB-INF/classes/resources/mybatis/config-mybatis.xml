@@ -9,10 +9,10 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias alias="shop" type="domain.Shop" />
-		<typeAlias alias="toy" type="domain.Toy" />
-		<typeAlias alias="customer" type="domain.Customer" />
-		<typeAlias alias="order" type="domain.Order" />
+		<typeAlias alias="shop" type="vo.Shop" />
+		<typeAlias alias="toy" type="vo.Toy" />
+		<typeAlias alias="customer" type="vo.Customer" />
+		<typeAlias alias="order" type="vo.Order" />
 	</typeAliases>
 	
 	<environments default="mysql" >

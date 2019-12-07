@@ -4,10 +4,26 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.ToyMapper">
+	<insert id="register" parameterType="toy">
+		INSERT INTO toy VALUES (NULL, #{toyName}, #{shopNo})
+	</insert>
 	
-	<select id="selectList" resultMap="toyJoinShop">
+	<select id="find" parameterType="toy" resultType="toy">
+		SELECT * FROM toy WHERE TOY_NO = #{toyNo} AND SHOP_NO = #{shopNo}
+	</select>
+	
+	<delete id="delete" parameterType="toy">
+		DELETE FROM toy WHERE TOY_NO = #{toyNo} AND TOY_NAME = #{toyName} AND SHOP_NO = #{shopNo}
+	</delete>
+	
+	<select id="selectList" resultMap="toyJoinShop" parameterType="shop">
 		SELECT TOY_NO, TOY_NAME, SHOP.SHOP_NO, SHOP_NAME, SHOP_LOCATION
 		FROM TOY LEFT JOIN SHOP on TOY.SHOP_NO = SHOP.SHOP_NO
+		<where>
+			<if test="shopLocation!=null and shopLocation!=''">
+				AND SHOP_LOCATION = #{shopLocation}
+			</if>
+		</where>
 	</select>
 	
 	<resultMap id="toyJoinShop" type="toy">

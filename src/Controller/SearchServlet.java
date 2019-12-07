@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SQL.ShopDao;
-import domain.Shop;
+import vo.Shop;
 
 @WebServlet("/From/Search")
 public class SearchServlet extends HttpServlet {
@@ -26,7 +26,6 @@ public class SearchServlet extends HttpServlet {
 		ShopDao shop = new ShopDao();
 		List<Shop> result = new ArrayList<Shop>();
 		
-		result = shop.search(shopLocation);
 		
 		if(shopLocation.equals("")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/From/ShopList");

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import SQL.OrderDao;
-import domain.Customer;
-import domain.Order;
+import vo.Customer;
+import vo.Order;
 
 @WebServlet("/From/Cancel")
 public class CancelServlet extends HttpServlet {

@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import domain.Shop;
-import domain.Toy;
+import vo.Shop;
+import vo.Toy;
 
 public class ToyDao {
 
@@ -26,13 +26,13 @@ public class ToyDao {
 		}
 	}
 
-	public List<Toy> selectList() {
+	public List<Toy> selectList(Shop param) {
 		List<Toy> toy = new ArrayList<>();
 		SqlSession session=null;
 		try {
 			session = sqlSessionFactory.openSession();
 			
-			toy = session.selectList("mybatis.ToyMapper.selectList");
+			toy = session.selectList("mybatis.ToyMapper.selectList", param);
 			
 			session.commit();
 		}catch(Exception e) {
@@ -68,6 +68,56 @@ public class ToyDao {
 			session = sqlSessionFactory.openSession();
 			
 			session.update("mybatis.ToyMapper.update", param);
+			
+			session.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		}finally {
+			session.close();
+		}
+	}
+
+	public void register(Toy param) {
+		SqlSession session = null;
+		try {
+			session = sqlSessionFactory.openSession();
+			
+			session.insert("mybatis.ToyMapper.register", param);
+			
+			session.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		}finally {
+			session.close();
+		}
+	}
+
+	public Toy find(Toy param) {
+		SqlSession session = null;
+		Toy toy = new Toy();
+		try {
+			session = sqlSessionFactory.openSession();
+			
+			toy = session.selectOne("mybatis.ToyMapper.find", param);
+			
+			session.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return toy;
+	}
+
+	public void delete(Toy param) {
+		SqlSession session = null;
+		try {
+			session = sqlSessionFactory.openSession();
+			
+			session.delete("mybatis.ToyMapper.delete", param);
 			
 			session.commit();
 		}catch(Exception e) {

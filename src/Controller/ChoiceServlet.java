@@ -13,12 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import SQL.OrderDao;
 import SQL.ToyDao;
-import domain.Customer;
-import domain.Order;
-import domain.Toy;
+import vo.Customer;
+import vo.Order;
+import vo.Toy;
 
-@WebServlet("/From/UpdateOrder")
-public class UpdateOrderServlet extends HttpServlet {
+@WebServlet("/From/Choice")
+public class ChoiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,8 +30,10 @@ public class UpdateOrderServlet extends HttpServlet {
 		String orderName = loginCustomer.getCustomerName();
 		int toyNo = Integer.parseInt(request.getParameter("toyNo"));
 		int shopNo = Integer.parseInt(request.getParameter("shopNo"));
+		
 		String or = request.getParameter("order");
 		String up = request.getParameter("update");
+		String de = request.getParameter("delete");
 		
 		if(or!=null) {
 			OrderDao order = new OrderDao();
@@ -46,8 +48,7 @@ public class UpdateOrderServlet extends HttpServlet {
 			script.println("alert(\"주문 완료\");");
 			script.println("window.location = '" + request.getContextPath() + "/From/ToyList'");
 			script.println("</script>");
-		}
-		if(up!=null) {
+		}else if(up!=null) {
 			Toy param = new Toy();
 			param.setShopNo(shopNo);
 			param.setToyNo(toyNo);
@@ -60,6 +61,22 @@ public class UpdateOrderServlet extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/UpdateToy.jsp");
 			dispatcher.forward(request, response);
+		}else if(de!=null) {
+			Toy param = new Toy();
+			param.setShopNo(shopNo);
+			param.setToyNo(toyNo);
+			
+			ToyDao toy = new ToyDao();
+			Toy result = new Toy();
+			
+			result = toy.find(param);
+			
+			toy.delete(result);
+			
+			script.println("<script>");
+			script.println("alert(\"삭제 완료\");");
+			script.println("window.location = '" + request.getContextPath() + "/From/ToyList'");
+			script.println("</script>");
 		}
 	}
 

@@ -1,6 +1,6 @@
-<%@page import="domain.Toy"%>
+<%@page import="vo.Toy"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="domain.Order"%>
+<%@page import="vo.Order"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

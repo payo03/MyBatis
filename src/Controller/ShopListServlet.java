@@ -12,25 +12,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SQL.ShopDao;
-import domain.Shop;
+import vo.Shop;
 
 @WebServlet("/From/ShopList")
 public class ShopListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Shop param = new Shop();
+		String shopLocation = request.getParameter("shopLocation");
+		param.setShopLocation(shopLocation);
 		
 		ShopDao shop = new ShopDao();
-		List<Shop> result = new ArrayList<>();
+		List<Shop> result = new ArrayList<Shop>();
 		
-		result = shop.shopList();
+		result = shop.shopList(param);
+		request.setAttribute("SearchData", result);
 		
-		if(result!=null) {
-			request.setAttribute("ShopList", result);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/ShopList.jsp");
-			dispatcher.forward(request, response);
-		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/ShopList.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

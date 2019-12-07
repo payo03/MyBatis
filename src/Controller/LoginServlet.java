@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import SQL.CustomerDao;
-import domain.Customer;
+import vo.Customer;
 
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {

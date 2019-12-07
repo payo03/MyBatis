@@ -1,8 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,26 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SQL.ToyDao;
-import vo.Shop;
-import vo.Toy;
-
-@WebServlet("/From/ToyList")
-public class ToyListServlet extends HttpServlet {
+@WebServlet("/From/RegisterShop")
+public class RegisterShopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Shop param = new Shop();
-		String shopLocation = request.getParameter("shopLocation");
-		param.setShopLocation(shopLocation);
-		
-		ToyDao toy = new ToyDao();
-		List<Toy> result = new ArrayList<Toy>();
-		
-		result = toy.selectList(param);
-		request.setAttribute("ToyList", result);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/ToyList.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/RegisterShop.jsp");
 		dispatcher.forward(request, response);
 	}
 

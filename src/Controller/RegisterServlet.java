@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SQL.CustomerDao;
-import domain.Customer;
+import vo.Customer;
 
 @WebServlet("/Register")
 public class RegisterServlet extends HttpServlet {

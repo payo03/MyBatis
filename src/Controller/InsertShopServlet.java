@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SQL.ShopDao;
-import domain.Shop;
+import vo.Shop;
 
 @WebServlet("/From/InsertShop")
 public class InsertShopServlet extends HttpServlet {

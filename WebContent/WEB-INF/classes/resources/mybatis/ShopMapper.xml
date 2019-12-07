@@ -4,19 +4,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.ShopMapper">
-
-	<select id="shopList" resultType="shop">
-		SELECT * FROM shop
-	</select>
 	
-	<insert id="insert" parameterType="shop">
+	<insert id="register" parameterType="shop">
 		INSERT INTO shop VALUES (#{shopNo}, #{shopName}, #{shopLocation}, #{shopStatus})
 	</insert>
 		
-	<select id="search" parameterType="shop" resultMap="shopJoinToy">
+	<select id="shopList" parameterType="shop" resultMap="shopJoinToy">
 		SELECT S.SHOP_NO, TOY_NO, TOY_NAME, SHOP_NAME, SHOP_LOCATION
 		FROM SHOP S LEFT JOIN TOY T on S.SHOP_NO = T.SHOP_NO
-		WHERE SHOP_LOCATION = #{shopLocation}
+		<where>
+			<if test="shopLocation!=null and shopLocation!=''">
+				AND SHOP_LOCATION = #{shopLocation}
+			</if>
+		</where>
 	</select>
 	
 	<resultMap id="shopJoinToy" type="shop">
