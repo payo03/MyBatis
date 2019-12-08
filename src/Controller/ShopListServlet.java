@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import SQL.ShopDao;
 import SQL.ToyDao;
+import vo.Search;
 import vo.Shop;
 import vo.Toy;
 
@@ -21,10 +22,12 @@ public class ShopListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Shop param = new Shop();
+		String toyName = request.getParameter("toyName");
 		String shopLocation = request.getParameter("shopLocation");
+		
+		Search param = new Search();
 		param.setShopLocation(shopLocation);
+		param.setToyName(toyName);
 		
 		ShopDao shop = new ShopDao();
 		List<Shop> result = new ArrayList<Shop>();

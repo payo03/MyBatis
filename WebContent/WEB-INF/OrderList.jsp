@@ -34,7 +34,7 @@
 			<td> <%= orderList.get(i).getCustomerName() %></td>
 			<td> 
 				<%= orderList.get(i).getToy().getToyName() %>
-				<a href="${pageContext.request.contextPath }/From/Cancel?toyNo=<%= orderList.get(i).getToyNo()%>&shopNo=<%= orderList.get(i).getShop().getShopNo() %>">주문 취소</a>
+				<a href="${pageContext.request.contextPath }/From/Cancel?toyNo=<%= orderList.get(i).getToyNo()%>&shopNo=<%= orderList.get(i).getShopNo() %>">주문 취소</a>
 			</td>
 			<td> <%= orderList.get(i).getShop().getShopName() %></td>
 			<td> <%= orderList.get(i).getOrderDate() %> </td>

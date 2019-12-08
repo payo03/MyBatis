@@ -17,12 +17,13 @@
 		<id column="ORDER_DATE" property="orderDate" />
 		<result column="CUSTOMER_NAME" property="customerName" />
 		<result column="TOY_NO" property="toyNo" />
+		<result column="SHOP_NO" property="shopNo" />
 		<association select="selectShop" column="{shopNo=SHOP_NO}" property="shop" />
 		<association select="selectToy" column="{toyNo=TOY_NO}" property="toy" />
 	</resultMap>
 	
 	<select id="selectShop" parameterType="shop" resultType="shop">
-		SELECT SHOP_NAME, SHOP_NO FROM shop WHERE SHOP_NO = #{shopNo}
+		SELECT SHOP_NAME FROM shop WHERE SHOP_NO = #{shopNo}
 	</select>
 	
 	<select id="selectToy" parameterType="toy" resultType="toy">

@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import vo.Search;
 import vo.Shop;
 
 public class ShopDao {
@@ -70,7 +71,7 @@ public class ShopDao {
 		}
 	}
 
-	public List<Shop> shopList(Shop param) {
+	public List<Shop> shopList(Search param) {
 		SqlSession session = null;
 		List<Shop> shop = new ArrayList<Shop>();
 		try {

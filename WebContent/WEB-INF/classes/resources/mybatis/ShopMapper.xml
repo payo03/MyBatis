@@ -9,12 +9,15 @@
 		INSERT INTO shop VALUES (#{shopNo}, #{shopName}, #{shopLocation}, #{shopStatus})
 	</insert>
 		
-	<select id="shopList" parameterType="shop" resultMap="shopJoinToy">
+	<select id="shopList" parameterType="search" resultMap="shopJoinToy">
 		SELECT S.SHOP_NO, TOY_NO, TOY_NAME, SHOP_NAME, SHOP_LOCATION
 		FROM SHOP S LEFT JOIN TOY T on S.SHOP_NO = T.SHOP_NO
 		<where>
 			<if test="shopLocation!=null and shopLocation!=''">
 				AND SHOP_LOCATION = #{shopLocation}
+			</if>
+			<if test="toyName!=null and toyName!=''">
+				AND TOY_NAME = #{toyName}
 			</if>
 		</where>
 	</select>
