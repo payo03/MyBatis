@@ -42,6 +42,7 @@
 </table>
 <form action="${pageContext.request.contextPath }/From/ShopList" method="post">
 	<div align="center">
+		<input type="text" name="toyName" placeholder="toyName" size="10">
 		<input type="text" name="shopLocation" placeholder="ShopLocation">
 		<input type="submit" value="검색">
 	</div>

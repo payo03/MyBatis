@@ -12,13 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SQL.ShopDao;
+import SQL.ToyDao;
 import vo.Shop;
+import vo.Toy;
 
 @WebServlet("/From/ShopList")
 public class ShopListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Shop param = new Shop();
 		String shopLocation = request.getParameter("shopLocation");
 		param.setShopLocation(shopLocation);
