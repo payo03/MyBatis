@@ -13,6 +13,7 @@
 		<typeAlias alias="toy" type="vo.Toy" />
 		<typeAlias alias="customer" type="vo.Customer" />
 		<typeAlias alias="order" type="vo.Order" />
+		<typeAlias alias="search" type="vo.Search" />
 	</typeAliases>
 	
 	<environments default="mysql" >
