@@ -19,17 +19,10 @@ public class CancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Customer customer = (Customer)session.getAttribute("Customer");
-		
-		int toyNo = Integer.parseInt(request.getParameter("toyNo"));
-		int shopNo = Integer.parseInt(request.getParameter("shopNo"));
-		String name = customer.getCustomerName();
+		int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 		
 		Order param = new Order();
-		param.setToyNo(toyNo);
-		param.setShopNo(shopNo);
-		param.setCustomerName(name);
+		param.setOrderNo(orderNo);
 		
 		OrderDao order = new OrderDao();
 		order.cancel(param);

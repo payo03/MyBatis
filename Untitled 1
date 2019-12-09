@@ -1,4 +1,4 @@
-		<select id="search" parameterType="string" resultMap="shopResultMap">
+		<select id="search" parameterType="shop" resultMap="shopResultMap">
 			SELECT T.TOY_NAME, S.SHOP_NAME, S.SHOP_NO
 			FROM shop S LEFT JOIN toy T ON S.SHOP_NO = T.SHOP_NO
 			WHERE S.SHOP_LOCATION = #{shopLocation}
@@ -7,10 +7,16 @@
 		<resultMap id="shopResultMap" type="order">
 			<id column="SHOP_NAME" property="shopName" />
 			<result column="SHOP_NO" property="shopNo" />
-			<collection ofType="toy" javaType="order" 
+			<collection ofType="toy" javaType="java.util.ArrayList" 
 				property="toys" resultMap="toyResultMap" />
 		</resultMap>
 		
 		<resultMap id="toyResultMap" type="toy">
 			<id column="TOY_NAME" property="toyName" />
 		</resultMap>
+		
+		order {
+			private String shopName;
+			private int shopNo
+			private List<Toy> toys
+		}

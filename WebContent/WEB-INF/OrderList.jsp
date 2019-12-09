@@ -32,9 +32,8 @@
 		<tr>
 			<td> <%= orderList.get(i).getToyNo() %> </td>
 			<td> <%= orderList.get(i).getCustomerName() %></td>
-			<td> 
-				<%= orderList.get(i).getToy().getToyName() %>
-				<a href="${pageContext.request.contextPath }/From/Cancel?toyNo=<%= orderList.get(i).getToyNo()%>&shopNo=<%= orderList.get(i).getShopNo() %>">주문 취소</a>
+			<td> <%= orderList.get(i).getToy().getToyName() %>
+				<a href="${pageContext.request.contextPath }/From/Cancel?orderNo=<%= orderList.get(i).getOrderNo() %>">주문 취소</a>
 			</td>
 			<td> <%= orderList.get(i).getShop().getShopName() %></td>
 			<td> <%= orderList.get(i).getOrderDate() %> </td>

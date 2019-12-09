@@ -6,11 +6,11 @@
 <mapper namespace="mybatis.OrderMapper">
 	
 	<insert id="order" parameterType="order">
-		INSERT INTO practice.order VALUES (NOW(), #{toyNo}, #{shopNo}, #{customerName})
+		INSERT INTO practice.order VALUES (NOW(), #{toyNo}, #{shopNo}, #{customerName}, NULL)
 	</insert>
 	
 	<select id="show" resultMap="orderShopToy" parameterType="order">
-		SELECT ORDER_DATE, TOY_NO, SHOP_NO, CUSTOMER_NAME FROM practice.order WHERE CUSTOMER_NAME = #{customerName}
+		SELECT ORDER_DATE, TOY_NO, SHOP_NO, CUSTOMER_NAME, ORDER_NO FROM practice.order WHERE CUSTOMER_NAME = #{customerName}
 	</select>
 	
 	<resultMap id="orderShopToy" type="order" >
@@ -32,6 +32,6 @@
 	
 	<delete id="cancel">
 		DELETE FROM practice.order 
-		WHERE TOY_NO=#{toyNo} and SHOP_NO=#{shopNo} and CUSTOMER_NAME = #{customerName}
+		WHERE ORDER_NO=#{orderNo}
 	</delete>
 </mapper>

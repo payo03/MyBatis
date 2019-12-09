@@ -8,10 +8,17 @@ public class Order implements Serializable{
 	private int shopNo;
 	private String orderDate;
 	private String customerName;
+	private int orderNo;
 	
 	private Shop shop;
 	private Toy toy;
 	
+	public int getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
+	}
 	public Shop getShop() {
 		return shop;
 	}
