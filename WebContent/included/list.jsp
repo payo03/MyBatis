@@ -15,7 +15,7 @@
 	<a href="${pageContext.request.contextPath }/From/ShopList">ShopList</a>&nbsp&nbsp&nbsp
 	<a href="${pageContext.request.contextPath }/From/ToyList">ToyList</a>&nbsp&nbsp&nbsp
 	<a href="${pageContext.request.contextPath }/From/OrderList">OrderList</a>&nbsp&nbsp&nbsp
-	<a href="${pageContext.request.contextPath }/From/ToyList">List</a>
+	<a href="${pageContext.request.contextPath }/From/ToyList">Board</a>
 	<div align="right">
 		<%= customer.getCustomerName() %>회원님!&nbsp <a href="${pageContext.request.contextPath }/From/Logout">로그아웃</a>
 	</div>

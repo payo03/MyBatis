@@ -16,7 +16,6 @@
 <table border="1" align="center" width="50%">
 	<thead>
 		<tr>
-			<td> ToyNo </td>
 			<td> ToyName </td>
 			<td> ShopName </td>
 			<td> ShopLocation </td>
@@ -26,7 +25,6 @@
 	<tbody>
 <%	for(int i=0; i<toyList.size(); i++) { %>
 		<tr>
-			<td> <%= toyList.get(i).getToyNo() %></td>
 			<td> <%= toyList.get(i).getToyName() %></td>
 <%			for(int j=0; j<toyList.get(i).getShops().size(); j++) { %>
 <%				String shopName = toyList.get(i).getShops().get(j).getShopName(); 

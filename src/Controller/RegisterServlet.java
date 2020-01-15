@@ -35,7 +35,6 @@ public class RegisterServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/LoginForm.jsp");
 			dispatcher.forward(request, response);
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

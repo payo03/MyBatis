@@ -16,7 +16,6 @@
 <table border="1" align="center" width="50%">
 	<thead>
 		<tr>
-			<td> ShopNo </td>
 			<td> ShopName </td>
 			<td> ShopLocation </td>
 			<td> ToyNo </td>
@@ -26,8 +25,6 @@
 	<tbody>
 <%		for(int i=0; i<shopList.size(); i++) { %>
 		<tr>
-			<td rowspan="<%= shopList.get(i).getToys().size()%>"> 
-				<%= shopList.get(i).getShopNo() %></td>
 			<td rowspan="<%= shopList.get(i).getToys().size()%>"> 
 				<%= shopList.get(i).getShopName() %></td>
 			<td rowspan="<%= shopList.get(i).getToys().size()%>"> 
