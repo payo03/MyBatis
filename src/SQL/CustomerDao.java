@@ -12,6 +12,7 @@ import vo.Customer;
 public class CustomerDao {
 	
 	private static SqlSessionFactory sqlSessionFactory;
+	private static SqlSession session;
 	
 	static {
 		try {
@@ -25,7 +26,6 @@ public class CustomerDao {
 
 	public Customer register(Customer param) {
 		Customer customer = new Customer();
-		SqlSession session=null;
 		try {
 			session = sqlSessionFactory.openSession();
 			
@@ -44,7 +44,6 @@ public class CustomerDao {
 
 	public Customer login(Customer param) {
 		Customer customer = new Customer();
-		SqlSession session=null;
 		try {
 			session = sqlSessionFactory.openSession();
 			

@@ -28,7 +28,8 @@
 			<td> <%= toyList.get(i).getToyName() %></td>
 <%			for(int j=0; j<toyList.get(i).getShops().size(); j++) { %>
 <%				String shopName = toyList.get(i).getShops().get(j).getShopName(); 
-				String shopLocation = toyList.get(i).getShops().get(j).getShopLocation() ;%>
+				String shopLocation = toyList.get(i).getShops().get(j).getShopLocation();
+				out.println(toyList.get(i).getShops().size() + "-" + toyList.size());%>
 				<td rowspan="<%= toyList.get(i).getShops().size()%>"> 
 					<%= shopName %></td>
 				<td rowspan="<%= toyList.get(i).getShops().size()%>"> 

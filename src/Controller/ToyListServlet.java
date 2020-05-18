@@ -20,8 +20,8 @@ public class ToyListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Shop param = new Shop();
 		String shopLocation = request.getParameter("shopLocation");
+		Shop param = new Shop();
 		param.setShopLocation(shopLocation);
 		
 		ToyDao toy = new ToyDao();

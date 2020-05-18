@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ public class LoginServlet extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		PrintWriter script = response.getWriter();
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -36,6 +38,10 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/From/Main");
 			dispatcher.forward(request, response);
 		}
+		script.println("<script>");
+		script.println("alert(\"ID 혹은 비밀번호를 확인하세요\");");
+		script.println("history.go(-1)");
+		script.println("</script>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
